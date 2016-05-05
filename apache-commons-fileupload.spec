@@ -18,7 +18,7 @@ Version:          1.3
 # 60.X where X is an increasing int. 60 for rhel-6. We use
 # 70.X for rhel-7. For some reason we cannot rely on the
 # dist tag.
-Release:          70.3%{?dist}
+Release:          70.5%{?dist}
 Summary:          This package provides an api to work with html file upload
 License:          ASL 2.0
 Group:            Development/Libraries
@@ -111,10 +111,18 @@ popd
 
 %files -f .mfiles
 %dir %{_javadir}/%{pkg_name}
+%dir %{_mavenpomdir}/%{pkg_name}
 
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Wed Mar 30 2016 Severin Gehwolf <sgehwolf@redhat.com> 1.3-70.5
+- Own in collection directory.
+- Resolves: RHBZ#1317970
+
+* Wed Jan 27 2016 Severin Gehwolf <sgehwolf@redhat.com> 1.3-70.4
+- Rebuild for RHSCL 2.2.
+
 * Mon Jan 19 2015 Severin Gehwolf <sgehwolf@redhat.com> 1.3-70.3
 - Require java common's libs for building instead of maven's
   collection libs.
