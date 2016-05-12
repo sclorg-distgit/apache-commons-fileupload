@@ -13,7 +13,7 @@ Version:          1.3
 # 60.X where X is an increasing int. 60 for rhel-6. We use
 # 70.X for rhel-7. For some reason we cannot rely on the
 # dist tag.
-Release:          60.7%{?dist}
+Release:          60.9%{?dist}
 Summary:          This package provides an api to work with html file upload
 License:          ASL 2.0
 Group:            Development/Libraries
@@ -113,11 +113,19 @@ install -d -m 755 %{buildroot}%{_javadir}/apache-commons-fileupload
 %files -f .mfiles
 # Own the fileupload directory in order to avoid it sticking
 # around after removal
-%dir %{_javadir}/apache-commons-fileupload
+%dir %{_javadir}/%{pkg_name}
+%dir %{_mavenpomdir}/%{pkg_name}
 
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Wed Mar 30 2016 Severin Gehwolf <sgehwolf@redhat.com> - 1.3-60.9
+- Own in collection directory.
+- Resolves: RHBZ#1317970
+
+* Wed Jan 27 2016 Severin Gehwolf <sgehwolf@redhat.com> - 1.3-60.8
+- Rebuild for RHSCL 2.2
+
 * Tue Jan 20 2015 Severin Gehwolf <sgehwolf@redhat.com> - 1.3-60.7
 - Use java common's libs as BR over maven30's.
 - Use java common's requires/provides generators.
